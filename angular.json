@@ -31,7 +31,8 @@
             ],
             "styles": [
               "src/styles.sass",
-              "node_modules/bulma/css/bulma.css"
+              "node_modules/bulma/css/bulma.css",
+              "node_modules/bulma-list/css/bulma-list.css"
             ],
             "scripts": []
           },
@@ -69,7 +70,8 @@
               "browserTarget": "manada:build:production"
             },
             "development": {
-              "browserTarget": "manada:build:development"
+              "browserTarget": "manada:build:development",
+              "poll": 2000
             }
           },
           "defaultConfiguration": "development"
