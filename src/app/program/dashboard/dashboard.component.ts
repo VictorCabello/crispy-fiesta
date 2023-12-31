@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { ProgramListComponent } from './program-list/program-list.component';
 import { ProgramStatisticsComponent } from './program-statistics/program-statistics.component';
 
@@ -14,23 +14,14 @@ enum Tab {
 })
 export class DashboardComponent{
 
-  @ViewChild(ProgramListComponent)
-  programList!:ProgramListComponent;
-  @ViewChild(ProgramStatisticsComponent)
-  statistics!:ProgramStatisticsComponent;
-
   currentTab: Tab = Tab.ProgramList;
   tabs: typeof Tab = Tab;
 
   showProgramList() : void {
-    this.programList.show();
-    this.statistics.hide();
     this.currentTab = Tab.ProgramList;
   }
 
   showStatistics() : void {
-    this.statistics.show();
-    this.programList.hide();
     this.currentTab = Tab.Statistics;
   }
 }

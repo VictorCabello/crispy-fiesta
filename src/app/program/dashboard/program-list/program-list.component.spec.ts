@@ -20,24 +20,4 @@ describe('ProgramListComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('.show()', () => {
-    beforeEach(() => {
-      component.show();
-    });
-    it('should show the component', ()=>{
-      expect(component.isActive).toBeTrue();
-      expect(component.isHidden).toBeFalse();
-    });
-  });
-
-  describe('.hide()', () => {
-    beforeEach(() => {
-      component.hide();
-    });
-    it('should hide the component', ()=>{
-      expect(component.isHidden).toBeTrue();
-      expect(component.isActive).toBeFalse();
-    });
-  });
-
 });
