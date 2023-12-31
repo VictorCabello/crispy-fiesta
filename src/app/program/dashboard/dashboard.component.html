@@ -3,19 +3,13 @@
 </section>
 <nav class="navbar is-primary is-fixed-bottom" role="navigation">
   <div class="navbar-brand">
-    <a class="navbar-item is-expanded is-block has-text-centered"
-      routerLink="/dashboard/program-list"
-      [ngClass]="currentTab == tabs.ProgramList? 'is-active': ''"
-      (click)="showProgramList()">
-      <i class="fa fa-user"></i>
+    <a *ngFor="let info of tabsInfo"
+       class="navbar-item is-expanded is-block has-text-centered"
+       routerLink="{{info.routerLink}}"
+       [ngClass]="classesFor(info.tab)"
+       (click)="setCurrentTab(info.tab)">
+      <i class="{{info.icon}}"></i>
       <p class="is-size-7">Programas</p>
-    </a>
-    <a class="navbar-item is-expanded is-block has-text-centered"
-      routerLink="/dashboard/program-statistics"
-      [ngClass]="currentTab == tabs.Statistics? 'is-active': ''"
-      (click)="showStatistics()">
-      <i class="fa fa-list"></i>
-      <p class="is-size-7">Estadisticas</p>
     </a>
   </div>
 </nav>

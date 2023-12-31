@@ -1,10 +1,15 @@
 import { Component } from '@angular/core';
-import { ProgramListComponent } from './program-list/program-list.component';
-import { ProgramStatisticsComponent } from './program-statistics/program-statistics.component';
 
 enum Tab {
   ProgramList,
-  Statistics
+  ProgramStatistics
+}
+
+interface TabInfo {
+  label: string;
+  icon: string;
+  routerLink: string;
+  tab: Tab;
 }
 
 @Component({
@@ -12,16 +17,31 @@ enum Tab {
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.sass']
 })
-export class DashboardComponent{
+export class DashboardComponent {
+
+  tabsInfo: TabInfo[] = [
+    {
+      label: 'Programas',
+      icon: 'lni lni-list',
+      routerLink: '/dashboard/program-list',
+      tab: Tab.ProgramList
+    },
+    {
+      label: 'Estatísticas',
+      icon: 'lni lni-stats-up',
+      routerLink: '/dashboard/program-statistics',
+      tab: Tab.ProgramStatistics
+    }
+  ];
 
   currentTab: Tab = Tab.ProgramList;
   tabs: typeof Tab = Tab;
 
-  showProgramList() : void {
-    this.currentTab = Tab.ProgramList;
+  classesFor(aTab: Tab): string {
+    return this.currentTab === aTab ? 'is-active' : '';
   }
 
-  showStatistics() : void {
-    this.currentTab = Tab.Statistics;
+  setCurrentTab(aTab: Tab): void {
+    this.currentTab = aTab;
   }
 }

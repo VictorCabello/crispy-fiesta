@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
+  let listClass: string;
+  let statistictsClass: string;
 
   beforeEach(async() => {
     TestBed.configureTestingModule({
@@ -23,21 +25,37 @@ describe('DashboardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('showProgramList()', () => {
+  describe('.classesFor(Tab.ProgramList)', () => {
     beforeEach(() => {
-      component.showProgramList();
+      listClass = component.classesFor(component.tabs.ProgramList);
+      statistictsClass = component.classesFor(component.tabs.ProgramStatistics);
+    });
+    it('should set empty class for ProgramStatistics', () => {
+      expect(statistictsClass).toEqual('');
+    });
+    it('should set is-active as class for ProgramList', () => {
+      expect(listClass).toEqual('is-active');
     });
     it('should mark programList as currentTab', () => {
       expect(component.currentTab).toEqual(component.tabs.ProgramList);
     });
   });
 
-  describe('showStatistics()', () => {
+  describe('.classesFor(Tab.ProgramStatistics)', () => {
     beforeEach(() => {
-      component.showStatistics();
+      component.setCurrentTab(component.tabs.ProgramStatistics);
+      listClass = component.classesFor(component.tabs.ProgramList);
+      statistictsClass = component.classesFor(component.tabs.ProgramStatistics);
     });
-    it('should mark statistics as currentTab', () => {
-      expect(component.currentTab).toEqual(component.tabs.Statistics);
+    it('should set empty class for ProgramList', () => {
+      expect(listClass).toEqual('');
+    });
+    it('should set is-active as class for ProgramStatistics', () => {
+      expect(statistictsClass).toEqual('is-active');
+    });
+    it('should mark ProgramStatistics as currentTab', () => {
+      expect(component.currentTab).toEqual(component.tabs.ProgramStatistics);
     });
   });
+
 });
