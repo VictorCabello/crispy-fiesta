@@ -2,6 +2,11 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { ProgramListComponent } from './program-list/program-list.component';
 import { ProgramStatisticsComponent } from './program-statistics/program-statistics.component';
 
+enum Tab {
+  ProgramList,
+  Statistics
+}
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,16 +14,23 @@ import { ProgramStatisticsComponent } from './program-statistics/program-statist
 })
 export class DashboardComponent{
 
-  @ViewChild(ProgramListComponent) programList!:ProgramListComponent;
-  @ViewChild(ProgramStatisticsComponent) statistics!:ProgramStatisticsComponent;
+  @ViewChild(ProgramListComponent)
+  programList!:ProgramListComponent;
+  @ViewChild(ProgramStatisticsComponent)
+  statistics!:ProgramStatisticsComponent;
+
+  currentTab: Tab = Tab.ProgramList;
+  tabs: typeof Tab = Tab;
 
   showProgramList() : void {
     this.programList.show();
     this.statistics.hide();
+    this.currentTab = Tab.ProgramList;
   }
 
   showStatistics() : void {
     this.statistics.show();
     this.programList.hide();
+    this.currentTab = Tab.Statistics;
   }
 }

@@ -5,11 +5,13 @@
 <nav class="navbar is-primary is-fixed-bottom" role="navigation">
   <div class="navbar-brand">
     <a class="navbar-item is-expanded is-block has-text-centered"
+      [ngClass]="currentTab == tabs.ProgramList? 'is-active': ''"
       (click)="showProgramList()">
       <i class="fa fa-user"></i>
       <p class="is-size-7">Programas</p>
     </a>
     <a class="navbar-item is-expanded is-block has-text-centered"
+      [ngClass]="currentTab == tabs.Statistics? 'is-active': ''"
       (click)="showStatistics()">
       <i class="fa fa-list"></i>
       <p class="is-size-7">Estadisticas</p>
