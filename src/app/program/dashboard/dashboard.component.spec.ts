@@ -1,15 +1,21 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardComponent } from './dashboard.component';
+import { ProgramListComponent } from './program-list/program-list.component';
+import { ProgramStatisticsComponent } from './program-statistics/program-statistics.component';
 
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
 
-  beforeEach(() => {
+  beforeEach(async() => {
     TestBed.configureTestingModule({
-      declarations: [DashboardComponent]
-    });
+      declarations: [
+        DashboardComponent,
+        ProgramListComponent,
+        ProgramStatisticsComponent
+      ]
+    }).compileComponents();
     fixture = TestBed.createComponent(DashboardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -20,48 +26,44 @@ describe('DashboardComponent', () => {
   });
 
   describe('showProgramList()', () => {
-    let programList:any;
+    let programList:ProgramListComponent;
     let statistics:any;
     beforeEach(() => {
-      programList = component.programList.nativeElement.classList;
-      statistics = component.statistics.nativeElement.classList;
-      spyOn(programList,'add');
-      spyOn(programList,'remove');
-      spyOn(statistics,'add');
-      spyOn(statistics,'remove');
+      programList = component.programList;
+      statistics = component.statistics;
+      spyOn(programList,'show').and.callFake(()=>{});
+      spyOn(programList,'hide').and.callFake(()=>{});
+      spyOn(statistics,'show').and.callFake(()=>{});
+      spyOn(statistics,'hide').and.callFake(()=>{});
       // Execute
       component.showProgramList();
     });
     it('should display progamList', () => {
-      expect(programList.add).toHaveBeenCalledWith('is-active');
-      expect(programList.remove).toHaveBeenCalledWith('is-hidden');
+      expect(programList.show).toHaveBeenCalled();
     });
     it('should hide statistics', () => {
-      expect(statistics.remove).toHaveBeenCalledWith('is-active');
-      expect(statistics.add).toHaveBeenCalledWith('is-hidden');
+      expect(statistics.hide).toHaveBeenCalled();
     });
   });
 
   describe('showStatistics()', () => {
-    let programList:any;
-    let statistics:any;
+    let programList:ProgramListComponent;
+    let statistics:ProgramStatisticsComponent;
     beforeEach(() => {
-      programList = component.programList.nativeElement.classList;
-      statistics = component.statistics.nativeElement.classList;
-      spyOn(programList,'add');
-      spyOn(programList,'remove');
-      spyOn(statistics,'add');
-      spyOn(statistics,'remove');
+      programList = component.programList;
+      statistics = component.statistics;
+      spyOn(programList,'show').and.callFake(()=>{});
+      spyOn(programList,'hide').and.callFake(()=>{});
+      spyOn(statistics,'show').and.callFake(()=>{});
+      spyOn(statistics,'hide').and.callFake(()=>{});
       // Execute
       component.showStatistics();
     });
     it('should hide progamList', () => {
-      expect(programList.remove).toHaveBeenCalledWith('is-active');
-      expect(programList.add).toHaveBeenCalledWith('is-hidden');
+      expect(programList.hide).toHaveBeenCalled();
     });
     it('should show statistics', () => {
-      expect(statistics.add).toHaveBeenCalledWith('is-active');
-      expect(statistics.remove).toHaveBeenCalledWith('is-hidden');
+      expect(statistics.show).toHaveBeenCalled();
     });
   });
 });

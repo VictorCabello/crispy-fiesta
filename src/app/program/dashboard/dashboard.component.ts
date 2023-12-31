@@ -1,26 +1,24 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { ProgramListComponent } from './program-list/program-list.component';
+import { ProgramStatisticsComponent } from './program-statistics/program-statistics.component';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.sass']
 })
-export class DashboardComponent {
+export class DashboardComponent{
 
-  @ViewChild('programList') programList!:ElementRef;
-  @ViewChild('statistics') statistics!:ElementRef;
+  @ViewChild(ProgramListComponent) programList!:ProgramListComponent;
+  @ViewChild(ProgramStatisticsComponent) statistics!:ProgramStatisticsComponent;
 
   showProgramList() : void {
-    this.programList.nativeElement.classList.add('is-active');
-    this.programList.nativeElement.classList.remove('is-hidden');
-    this.statistics.nativeElement.classList.add('is-hidden');
-    this.statistics.nativeElement.classList.remove('is-active');
+    this.programList.show();
+    this.statistics.hide();
   }
 
   showStatistics() : void {
-    this.statistics.nativeElement.classList.add('is-active');
-    this.statistics.nativeElement.classList.remove('is-hidden');
-    this.programList.nativeElement.classList.add('is-hidden');
-    this.programList.nativeElement.classList.remove('is-active');
+    this.statistics.show();
+    this.programList.hide();
   }
 }
