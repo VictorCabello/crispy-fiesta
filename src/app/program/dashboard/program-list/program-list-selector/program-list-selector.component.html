@@ -1,0 +1,10 @@
+<div class="select is-full" style="width: 100%">
+  <select style="width: 100%"
+          [(ngModel)]="currentCycle"
+          (ngModelChange)="selectCycle($event)"
+          >
+          <option *ngFor="let cycle of cycleList" [ngValue]="cycle">
+          {{cycle.name}}
+          </option>
+  </select>
+</div>

@@ -10,7 +10,6 @@ export class NavbarComponent {
   @ViewChild('navBurger') navBurger!: ElementRef;
   @ViewChild('navMenu') navMenu!: ElementRef;
 
-
   toggleNavbar() {
     this.navBurger.nativeElement.classList.toggle('is-active');
     this.navMenu.nativeElement.classList.toggle('is-active');

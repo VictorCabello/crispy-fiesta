@@ -1,14 +1,27 @@
-  <div class="box">
-    <div class="list has-overflow-ellipsis has-hoverable-list-items">
-      <div class="list-item">
-        <div class="list-item-content">
-          <div class="list-item-title">
-            Dia de muertos
-          </div>
-          <div class="description">
-            15/08/2025
+<div class="box">
+  <div class="columns">
+    <div class="column is-full">
+
+      <app-program-list-selector (cycleSelected)="onCycleSelected($event)"></app-program-list-selector>
+
+      <div class="list has-overflow-ellipsis has-hoverable-list-items">
+
+        <div class="list-item" [ngClass]="state === listState.Loaded? 'is-hidden':'is-active'">
+          <progress class="progress is-small is-primary" max="100">15%</progress>
+        </div>
+
+        <div class="list-item" *ngFor="let program of list">
+          <div class="list-item-content">
+            <div class="list-item-title">
+              {{ program.name }}
+            </div>
+            <div class="description">
+              {{ program.date | date: 'dd/MM/YYYY' }}
+            </div>
           </div>
         </div>
       </div>
+
     </div>
   </div>
+</div>

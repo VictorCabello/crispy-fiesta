@@ -7,6 +7,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './program/dashboard/dashboard.component';
 import { ProgramListComponent } from './program/dashboard/program-list/program-list.component';
 import { ProgramStatisticsComponent } from './program/dashboard/program-statistics/program-statistics.component';
+import { FormsModule } from '@angular/forms';
+import { ProgramListSelectorComponent } from './program/dashboard/program-list/program-list-selector/program-list-selector.component';
 
 @NgModule({
   declarations: [
@@ -14,10 +16,12 @@ import { ProgramStatisticsComponent } from './program/dashboard/program-statisti
     NavbarComponent,
     DashboardComponent,
     ProgramListComponent,
-    ProgramStatisticsComponent
+    ProgramStatisticsComponent,
+    ProgramListSelectorComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule
   ],
   providers: [],

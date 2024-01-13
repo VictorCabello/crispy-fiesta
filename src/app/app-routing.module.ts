@@ -14,11 +14,17 @@ const routes: Routes = [
       { path: '', redirectTo: '/dashboard/program-list', pathMatch: 'full' }
     ]
   },
-  { path: '', redirectTo: '/dashboard/program-list', pathMatch: 'full' }
+  { path: '', redirectTo: '/dashboard/program-list', pathMatch: 'full' },
+
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(
+      routes,
+      { bindToComponentInputs: true }
+    )
+  ],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
